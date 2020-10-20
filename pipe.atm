@@ -1,0 +1,24 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'Ubuntu-Docker'
+        }
+		    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+          stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('Docker_builds/httpd') {
+                	sh 'docker build -t website:latest . '
+                }
+            }
+        }
+}
+}
