@@ -14,7 +14,7 @@ pipeline {
           stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('Dockerbuilds/httpd') {
+                dir ('Docker_builds/httpd') {
                 	sh 'docker build -t website:latest . '
                 }
             }
