@@ -1,5 +1,3 @@
-#!/bin/bash
-################################## Add repo
 echo "Adding jenkins repo"
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo > /dev/null 2>&1
 
@@ -15,12 +13,12 @@ fi
 echo "Importing gpg-key"
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key > /dev/null 2>&1
 
-if [ $? -eq 0 ]
-then
-echo "gpg-pubkey successfully added "
-else
-echo "Adding gpg-pubkey failed"
-fi
+case $? in
+0)
+echo "gpg-pubkey successfully added";;
+*)
+echo "Adding gpg-pubkey failed";;
+esac
 
 
 ################################ Install Jenkins and Java
