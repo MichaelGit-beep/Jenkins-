@@ -35,6 +35,5 @@ fi
 
 
 ############################# Configure Jenkins service startup and Firewall rules
-firewall-cmd --add-port=8080/tcp --add-port=8123/tcp --permanent && firewall-cmd --reload
-systemctl --now enable jenkins.service
-
+firewall-cmd --add-port=8080/tcp --add-port=8123/tcp --permanent > /dev/null 2>&1 && firewall-cmd --reload && echo "FW Rules was configured"
+systemctl --now enable jenkins.service > /dev/null 2>&1 && echo "Jenkins service will start automatically on system sturtup"
