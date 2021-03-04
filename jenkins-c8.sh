@@ -34,6 +34,7 @@ echo "Jenkins Installation Failed"
 fi
 
 
-############################# Configure Jenkins service startup
-systemctl --now enable jenkins.service
+############################# Configure Jenkins service startup and Firewall rules
 firewall-cmd --add-port=8080/tcp --add-port=8123/tcp --permanent && firewall-cmd --reload
+systemctl --now enable jenkins.service
+
