@@ -1,3 +1,5 @@
+#!/bin/bash
+############################ Add Jenkins repo
 echo "Adding jenkins repo"
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo > /dev/null 2>&1
 
