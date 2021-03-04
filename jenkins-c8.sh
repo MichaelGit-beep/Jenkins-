@@ -36,4 +36,4 @@ fi
 
 ############################# Configure Jenkins service startup
 systemctl --now enable jenkins.service
-firewall-cmd --add-port=8080/tcp --add-port=8123/tcp --permanent
+firewall-cmd --add-port=8080/tcp --add-port=8123/tcp --permanent && firewall-cmd --reload
