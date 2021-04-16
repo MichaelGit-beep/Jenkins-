@@ -6,14 +6,14 @@ pipeline {
     string(name: 'Version', defaultValue: 1.0)
     }
     stages {
-        when {
-           expression {
-             params.executeBuild == True
-           }
-        }
         stage('Build') { 
+           when {
+             expression {
+               params.executeBuild == True
+             }
+           }
             steps {
-                sh echo 'Start Building ${params.Version}' 
+                sh "echo 'Start Building ${params.Version}'" 
             }
         }
     }
