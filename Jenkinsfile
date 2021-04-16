@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bash 
+                bash '''
                 #/bin/bash
                 x=1
                 while [ $x -ne 10 ]
@@ -11,6 +11,7 @@ pipeline {
                 echo "Valueis is $x"
                 x=$((x+1))
                 done
+                '''
             }
         }
         stage('Test') { 
