@@ -1,0 +1,20 @@
+  
+pipeline {
+    agent any 
+    parameters {
+    booleanParam(name: 'executeBuild', defaultValue: true)
+    string(name: 'Version', defaultValue: 1.0)
+    }
+    stages {
+        when {
+           expression {
+             params.executeBuild == True
+           }
+        }
+        stage('Build') { 
+            steps {
+                sh echo 'Start Building ${params.Version}' 
+            }
+        }
+    }
+}
