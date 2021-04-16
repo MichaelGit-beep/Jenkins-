@@ -3,16 +3,18 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo "Start Build"
-                echo "Start Build - 1"
+                #/bin/bash
+                x=1
+                while [ $x -ne 10 ]
+                do
+                echo "Valueis is $x"
+                x=$((x+1))
+                done
             }
         }
         stage('Test') { 
             steps {
                 echo "Start Test"
-            }
-            steps {
-                echo "Start Test - 2"
             }
         }
         stage('Deploy') { 
