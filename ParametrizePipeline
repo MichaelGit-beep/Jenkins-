@@ -1,14 +1,14 @@
 pipeline {
     agent any 
     parameters {
-    booleanParam(name: 'executeBuild', defaultValue: 'true')   #Set booleanparameter 
+    booleanParam(name: 'executeBuild', defaultValue: 'true')   
     string(name: 'Version', defaultValue: '1.0')
     }
     stages {
         stage('Build') { 
            when {
              expression {
-               params.executeBuild == true            #Will execute the step only when parameter is true
+               params.executeBuild == true           
              }
            }
             steps {
