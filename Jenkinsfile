@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh
+                bash 
                 #/bin/bash
                 x=1
                 while [ $x -ne 10 ]
