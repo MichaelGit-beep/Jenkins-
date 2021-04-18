@@ -1,0 +1,15 @@
+pipeline {
+    agent { label 'windows'}
+    stages{
+        stage('One'){
+            steps{
+            powershell '''
+            $one = "Hello"
+            $two = "World"
+            write-host $one
+            write-host $two
+            '''
+            }
+        }
+    }
+}
