@@ -1,8 +1,9 @@
   
 pipeline {
-    agent any 
+    agent none 
     stages {
         stage('Build') { 
+        agent { label 'linux' }
             steps {
                 sh '/tmp/1.sh'
             }
