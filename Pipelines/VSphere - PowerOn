@@ -1,0 +1,13 @@
+pipeline{
+    agent { label 'linux' }
+    parameters {
+    string(name: 'VM', defaultValue: 'VMS-Milestone-20xx')
+    }
+    stages{
+        stage('Power-Off-VM'){
+            steps{
+                vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: "${params.VM}"], serverName: 'vCenter-58'
+            }
+        }
+    }
+}
