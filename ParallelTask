@@ -1,21 +1,27 @@
-pipeline {
+pipeline{
     agent none
     stages{
-        stage('Stage-A'){
-            parallel{
-                stage('Test-on-Windows'){
-                agent { label 'windows'}
-                 steps{
-                   echo 'Test-1'
-                 }
-                }
-                stage('Test-on-Linux'){
+        stage('Parralel Build'){
+          parallel{
+              stage('On Windows'){
+                  agent { label 'windows'}
+                    steps{
+                        powershell '''
+                        $build = "Stating Build on Windows"
+                        Write-Output $build
+                        '''
+                    }
+              }
+              stage('On Linux'){
                 agent { label 'linux'}
                   steps{
-                      echo 'Test-1'
+                      sh '''
+                      x="Startin Bild on Linux"
+                      echo $x
+                      '''
                   }
-                }
-            }
+              }
+          }
         }
     }
-} 
+}
