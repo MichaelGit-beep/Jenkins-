@@ -1,7 +1,7 @@
 pipeline{
     agent { label 'linux' }
     parameters {
-    string(name: 'VM', defaultValue: 'VMS-Milestone-20xx')
+    string(name: 'VM', defaultValue: 'VM20xx')
     }
     stages{
         stage('Power-Off-VM'){
