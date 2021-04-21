@@ -1,0 +1,16 @@
+pipeline{
+    agent none
+    parameters{
+        string(name: 'VMNAME', defaultValue: 'VM-20xx')
+        string(name: 'VMNET', defaultValue: '503')
+        string(name: 'CLOUDE', defaultValue: 'vCenter-58')
+    }
+    stages{
+        stage('Move-To-212'){
+            agent { label 'linux' }
+              steps{
+                vSphere buildStep: [$class: 'Reconfigure', reconfigureSteps: [[$class: 'ReconfigureNetworkAdapters', deviceAction: 'EDIT', deviceLabel: '', distributedSwitch: false, macAddress: '', portGroup: "${params.VMNET}", standardSwitch: true]], vm: "${params.VMNAME}"], serverName: "${params.CLOUDE}"
+            }
+        }
+    }
+}
