@@ -1,18 +1,34 @@
 pipeline {
-    agent any 
-    parameters {
-    booleanParam(name: 'executeBuild', defaultValue: 'true')   
-    string(name: 'Version', defaultValue: '1.0')
+    agent none
+    environment {
+        VAR1 = 'ValueOfVar1'
+        VAR2 = 'ValueOfVar2'
     }
-    stages {
-        stage('Build') { 
-           when {
-             expression {
-               params.executeBuild == true           
-             }
-           }
-            steps {
-                sh "echo 'Start Building ${params.Version}'" 
+    parameters{
+        string(name: 'Parameter', defaultValue: 'ValueofParameter-1')
+        booleanParam(name: 'ExecuteBuildStep', defaultValue: 'true')
+    }
+    stages{
+        stage('Parralel-1'){
+            when{
+                expression {
+                    params.ExecuteBuildStep == true
+                }
+            }
+            parallel{               
+                stage('Stage-1.1') { 
+                  agent { label 'linux' }
+                  steps {
+                   sh "echo '${VAR1}'"
+                   sh "echo '${VAR2}'"
+                  }
+                }
+                stage('Stage-1.2') { 
+                  agent { label 'linux' }
+                  steps {
+                   sh "echo '${params.Parameter}'"
+                  }
+                }
             }
         }
     }
