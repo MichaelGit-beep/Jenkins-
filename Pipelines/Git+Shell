@@ -1,0 +1,22 @@
+pipeline {
+    agent none 
+    parameters{
+        string(name: 'VMName', defaultValue: 'VM-1')
+        string(name: 'VMNetwork', defaultValue: 'VM-1')
+    }
+    stages {
+        stage('Fetch Source Code') { 
+        agent { label 'linux' }
+            steps {
+                git credentialsId: 'cf89e1b4-6b43-415b-9e5b-70a121de3e2b', url: 'https://gitlab.com/MichaelGit-Beep/bclab.git'
+            }         
+        }
+        stage('Create VM'){
+            agent { label 'linux' }
+            steps{
+               sh "terraform -chdir=standalone-host-clone-template/ init"
+               sh "terraform -chdir=standalone-host-clone-template/ apply -auto-approve -var 'prefix_name=${params.VMName}'"
+            }
+        }
+    }
+}
