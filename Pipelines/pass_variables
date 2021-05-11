@@ -1,0 +1,18 @@
+pipeline{
+    agent {label 'linux'}
+    stages{
+        stage('ExposeInfo'){
+            steps{
+                script {
+  //              def ip = vSphere buildStep: [$class: 'ExposeGuestInfo', envVariablePrefix: "VM1", waitForIp4: true, vm: 'Machine2'], serverName: 'vCenter-58'
+                env.IP = vSphere buildStep: [$class: 'ExposeGuestInfo', envVariablePrefix: "VM1", waitForIp4: true, vm: 'Machine2'], serverName: 'vCenter-58'
+                }
+            }
+        }
+        stage("log"){
+            steps{
+                echo "${IP}"
+            }
+        }
+    }
+}
