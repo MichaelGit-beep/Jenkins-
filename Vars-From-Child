@@ -1,0 +1,46 @@
+// Parent job
+pipeline{
+    agent none
+    stages{
+        stage('1'){
+            parallel{
+                stage('linux'){
+                    agent {label 'linux'}
+                    steps{
+                        script{
+                            def job = build job: 'child'
+                            env.ip = "${job.buildVariables.vm_ip}"
+                        }
+                    }
+                }
+            }
+        }
+        stage('2'){
+            agent {label 'linux'}
+            steps{
+                script{
+                    sh "echo Variable from child build ${ip}"
+                }
+            }
+        }
+    }
+}
+
+// Child job
+pipeline{
+    agent none
+    stages{
+        stage('1'){
+            parallel{
+                stage('linux'){
+                    agent {label 'linux'}
+                    steps{
+                        script{
+                            env.vm_ip = "192.168.77.2"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
