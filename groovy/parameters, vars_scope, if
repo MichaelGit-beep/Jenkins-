@@ -12,7 +12,7 @@
     )  
 node {
     stage('Cleaning out') {
-        var1 = "Value2"
+        var1 = "Value2" // Reset Var on line 1 but not affect second string
         if (params.keep_running == false){
             println "Shutting down VM"
             if (params.keep == false){
