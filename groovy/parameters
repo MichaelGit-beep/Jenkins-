@@ -7,7 +7,7 @@
 
     ]
     )  
-node {
+node('linux) {
     stage('Cleaning out') {
         if (params.keep_running == false){
             println "Shutting down VM"
