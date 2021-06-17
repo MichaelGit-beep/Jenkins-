@@ -1,14 +1,18 @@
+  def var1 = "Value1"
+  env.var1 = "Value1"
+  
   properties(
     [
         parameters(
-            [booleanParam(defaultValue: "true", name: 'keep'),
-             booleanParam(defaultValue: "false", name: 'keep_running')]
+            [booleanParam(defaultValue: true, name: 'keep'),
+             booleanParam(defaultValue: false, name: 'keep_running')]
             )
 
     ]
     )  
-node('linux) {
+node {
     stage('Cleaning out') {
+        var1 = "Value2"
         if (params.keep_running == false){
             println "Shutting down VM"
             if (params.keep == false){
@@ -16,4 +20,8 @@ node('linux) {
             }
         }
         }
+    stage('Vars Scope'){
+        println "${var1}"
+        println "${env.var1}"
+    }
     }
