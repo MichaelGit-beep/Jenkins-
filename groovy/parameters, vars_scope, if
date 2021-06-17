@@ -21,7 +21,7 @@ node {
         }
         }
     stage('Vars Scope'){
-        println "${var1}"
-        println "${env.var1}"
+        println "${var1}" // Printed string1
+        println "${env.var1}" // Printed string2
     }
     }
