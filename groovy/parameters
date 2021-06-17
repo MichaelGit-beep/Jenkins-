@@ -1,0 +1,19 @@
+  properties(
+    [
+        parameters(
+            [booleanParam(defaultValue: "true", name: 'keep'),
+             booleanParam(defaultValue: "false", name: 'keep_running')]
+            )
+
+    ]
+    )  
+node {
+    stage('Cleaning out') {
+        if (params.keep_running == false){
+            println "Shutting down VM"
+            if (params.keep == false){
+                println "Deleting VM"
+            }
+        }
+        }
+    }
