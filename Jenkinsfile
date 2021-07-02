@@ -6,5 +6,10 @@ pipeline{
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: []]], userRemoteConfigs: [[url: 'https://github.com/MichaelGit-beep/Hello_World.git']]])
           }
           }
+       stage('git checkout'){
+          steps{
+        sh "ls"
+          }
+          }
     }
 }
