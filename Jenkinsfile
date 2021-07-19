@@ -30,5 +30,11 @@ pipeline {
       }
     }
 
+    stage('123') {
+      steps {
+        sleep 1
+      }
+    }
+
   }
 }
