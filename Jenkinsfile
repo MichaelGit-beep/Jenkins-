@@ -31,18 +31,29 @@ pipeline {
     }
 
     stage('123') {
-      steps {
-        sh 'sleep 1'
+      parallel {
+        stage('123') {
+          steps {
+            sh 'sleep 1'
+          }
+        }
+
+        stage('13333') {
+          steps {
+            sleep 1
+          }
+        }
+
       }
     }
-    
+
     stage('222') {
       steps {
         sh 'sleep 1'
       }
     }
 
-      stage('Step 13') {
+    stage('Step 13') {
       parallel {
         stage('Step 14') {
           steps {
@@ -64,5 +75,6 @@ pipeline {
 
       }
     }
+
   }
 }
