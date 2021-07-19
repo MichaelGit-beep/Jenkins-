@@ -11,7 +11,7 @@ pipeline {
 
         stage('Step 2') {
           steps {
-            sh 'sleep 10'
+            sh 'sleep 1'
           }
         }
 
@@ -26,13 +26,13 @@ pipeline {
 
     stage('sleep') {
       steps {
-        sleep 10
+        sleep 1
       }
     }
 
     stage('123') {
       steps {
-        sh 'sleep 10'
+        sh 'sleep 1'
       }
     }
 
