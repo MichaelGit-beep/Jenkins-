@@ -42,5 +42,27 @@ pipeline {
       }
     }
 
+      stage('Step 13') {
+      parallel {
+        stage('Step 14') {
+          steps {
+            sh 'echo "Step 1"'
+          }
+        }
+
+        stage('Step 25') {
+          steps {
+            sh 'sleep 1'
+          }
+        }
+
+        stage('Step 36') {
+          steps {
+            sleep 1
+          }
+        }
+
+      }
+    }
   }
 }
