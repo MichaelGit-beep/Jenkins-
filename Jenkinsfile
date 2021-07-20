@@ -25,8 +25,19 @@ pipeline {
     }
 
     stage('sleep') {
-      steps {
-        sleep 1
+      parallel {
+        stage('sleep') {
+          steps {
+            sleep 1
+          }
+        }
+
+        stage('ttt') {
+          steps {
+            sleep 1
+          }
+        }
+
       }
     }
 
@@ -78,7 +89,7 @@ pipeline {
             sleep 1
           }
         }
-        
+
       }
     }
 
