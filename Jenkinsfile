@@ -1,5 +1,12 @@
 pipeline {
   agent any
+  parameters{
+        string(name: "TargetMachine", defaultValue: "", description: "Target Machine Address")
+        string(name: "Username", defaultValue: "", description: "Target Machine User")
+        password(name: "Password", defaultValue: "", description: "Target Machine Password")
+        string(name: "GraylogAPI", defaultValue: "", description: "Graylog Server API URL")
+        password(name: "Token", defaultValue: "", description: "Graylog's API Token for sidecar")
+    }
   stages {
     stage('Step 1') {
       parallel {
