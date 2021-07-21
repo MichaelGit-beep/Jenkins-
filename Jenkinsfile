@@ -59,8 +59,19 @@ pipeline {
     }
 
     stage('222') {
-      steps {
-        sh 'sleep 1'
+      parallel {
+        stage('222') {
+          steps {
+            sh 'sleep 1'
+          }
+        }
+
+        stage('test1') {
+          steps {
+            sleep 1
+          }
+        }
+
       }
     }
 
