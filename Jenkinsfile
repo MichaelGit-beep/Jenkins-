@@ -44,6 +44,12 @@ pipeline {
           }
         }
 
+        stage('sadfasdfasdf') {
+          steps {
+            sleep 1
+          }
+        }
+
       }
     }
 
