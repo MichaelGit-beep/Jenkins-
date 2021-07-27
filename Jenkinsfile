@@ -103,7 +103,7 @@ pipeline {
 
         stage('Step 25') {
           steps {
-            sh 'sleep 1'
+            sh 'asd fasd fasd fasd fa sdf'
           }
         }
 
