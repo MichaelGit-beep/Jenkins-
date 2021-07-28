@@ -21,23 +21,11 @@ pipeline {
           }
         }
 
-        stage('Step 3') {
-          steps {
-            sleep 1
-          }
-        }
-
       }
     }
 
     stage('sleep') {
       parallel {
-        stage('sleep') {
-          steps {
-            sleep 1
-          }
-        }
-
         stage('ttt') {
           steps {
             sleep 1
@@ -76,34 +64,11 @@ pipeline {
       }
     }
 
-    stage('222') {
-      parallel {
-        stage('222') {
-          steps {
-            sh 'sleep 1'
-          }
-        }
-
-        stage('test1') {
-          steps {
-            sleep 1
-          }
-        }
-
-      }
-    }
-
     stage('Step 13') {
       parallel {
         stage('Step 14') {
           steps {
             sh 'echo "Step 1"'
-          }
-        }
-
-        stage('Step 25') {
-          steps {
-            sh 'echo 1'
           }
         }
 
