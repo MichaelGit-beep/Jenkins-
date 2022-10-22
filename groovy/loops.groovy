@@ -23,3 +23,14 @@ switch(i) {
     default:
     println("default")
 }
+
+Map abcd = [
+    "a": 255,
+    "b": 65535,
+    "c": 16777215,
+    "d": 4294967295
+]
+
+abcd.each {  
+    println("key: $it.key value: $it.value")
+}
