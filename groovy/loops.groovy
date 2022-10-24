@@ -33,4 +33,13 @@ Map abcd = [
 
 abcd.each {  
     println("key: $it.key value: $it.value")
+    if (it.key == "a") {
+        println("a")
+    } else if (it.key == "b") {
+        println("a")
+    } else if (it.key == "c") {
+        println("c")
+    } else {
+        println("else")
+    }
 }
