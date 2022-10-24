@@ -1,7 +1,7 @@
 class Animal {
     
-    String type = ""
-    String origin = ""
+    String type = "XXX"
+    String origin = "XXX"
 
     def whoami() {
         if (type == "") {
@@ -21,11 +21,8 @@ class Animal {
 }
 
 
-class Pet extends Animal {
-        def whoami() {
-        println("Ta-da Polymorphism")
-    }
-}
+class Pet extends Animal {}
 
-def an1 = new Pet()
+def an1 = new Pet(type: "Dog")
 an1.whoami()
+an1.whereifrom()
