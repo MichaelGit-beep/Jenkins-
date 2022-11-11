@@ -9,7 +9,7 @@ docker run -d -p 8080:8080 --name jenkins \
   bitnami/jenkins:2.361.3-debian-11-r3 
   
 - user/bitnami
-- install docker pipeline plugin
+- install docker pipeline plugin (https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow)
 
 ### Scripted pipeline usage
 ```
