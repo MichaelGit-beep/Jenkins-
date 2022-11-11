@@ -10,7 +10,7 @@ docker run -d -p 8080:8080 --name jenkins \
   
 - user/bitnami
 - install docker pipeline plugin (https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow)
-
+- repo with DSL examples https://github.com/darinpope/jenkins-example-docker
 ### Scripted pipeline usage
 ```
 node("linux") {
