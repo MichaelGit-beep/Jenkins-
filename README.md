@@ -42,3 +42,22 @@ pipeline {
   }
 }
 ```
+
+
+### Build costum image and run
+```
+node("linux") {
+    sh """
+cat <<EOF> Dockerfile
+FROM node:16-alpine
+EOF
+    """
+    def myEnv = docker.build 'my-environment:snapshot'
+    myEnv.inside {
+        sh '''
+            node --version
+            ls
+        '''
+    }
+}
+```
